@@ -4,6 +4,7 @@ module.exports = {
     name: 'pokemon',
     async execute(message,args,Discord, fetch) { // pokemon random
 
+
         let rando = Math.floor((Math.random() * 898) + 1);
         let rando1 = Math.floor((Math.random() * 100) + 1);
 
