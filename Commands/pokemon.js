@@ -10,11 +10,11 @@ module.exports = {
         const pokemon = await fetch('https://pokeapi.co/api/v2/pokemon-form/'+rando).then(response => response.json());
 
         const embed = new Discord.MessageEmbed()
-            .setAuthor("Random Pokemon")
+            .setAuthor("ID: ["+pokemon.id+"] "+message.author.tag+'s Catch!')
             .setColor(0x00AE86)
             .setThumbnail(pokemon.sprites.front_default)
            .addFields(
-                { name: 'Name', value: pokemon.name },
+                { name: 'A wild Pokemon appears!', value: pokemon.name },
                 { name: 'Level', value: rando1 }
           
 
