@@ -22,7 +22,7 @@ client.on('message', message => {
 	if (!client.commands.has(command)) return;
 
 	try {
-        client.commands.get(command).execute(message, args, Discord, fetch, fs, command);
+        client.commands.get(command).execute(message, args, Discord, fetch, fs, command, fetch);
         console.log(message.author.tag+" Has executed the command: "+command)
 	} catch (error) {
 		console.error(error);
@@ -34,6 +34,41 @@ client.on('message', message => {
 
 client.once('ready', () => {
 	console.log('Ready!');
+});
+
+
+client.on('messageReactionAdd', (reaction, user) => { // 📢 📰🎉 
+	if(user.bot) return;
+	if (reaction.message.channel.id == '776157558217637919') {
+		let member = reaction.message.guild.members.cache.get(user.id);
+		if (reaction.emoji.name === '📢') {
+			const role =  reaction.message.guild.roles.cache.find((r) => r.name === 'Announcements');
+			member.roles.add(role, 'Reaction role').catch((error) => this.client.logger.error(error));
+		} else if (reaction.emoji.name === '📰') {
+			const role =  reaction.message.guild.roles.cache.find((r) => r.name === 'Changelog');
+			member.roles.add(role, 'Reaction role').catch((error) => this.client.logger.error(error));
+		} else if (reaction.emoji.name === '🎉') {
+			const role =  reaction.message.guild.roles.cache.find((r) => r.name === 'Events');
+			member.roles.add(role, 'Reaction role').catch((error) => this.client.logger.error(error));
+		}
+	}
+});
+
+client.on('messageReactionRemove', (reaction, user) => { // 📢 📰🎉 
+	if(user.bot) return;
+	if (reaction.message.channel.id == '776157558217637919') {
+		let member = reaction.message.guild.members.cache.get(user.id);
+		if (reaction.emoji.name === '📢') {
+			const role =  reaction.message.guild.roles.cache.find((r) => r.name === 'Announcements');
+			member.roles.remove(role, 'Reaction role').catch((error) => this.client.logger.error(error));
+		} else if (reaction.emoji.name === '📰') {
+			const role =  reaction.message.guild.roles.cache.find((r) => r.name === 'Changelog');
+			member.roles.remove(role, 'Reaction role').catch((error) => this.client.logger.error(error));
+		} else if (reaction.emoji.name === '🎉') {
+			const role =  reaction.message.guild.roles.cache.find((r) => r.name === 'Events');
+			member.roles.remove(role, 'Reaction role').catch((error) => this.client.logger.error(error));
+		}
+	}
 });
 
 client.login(config.token);
