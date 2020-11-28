@@ -39,7 +39,7 @@ client.once('ready', () => {
 
 client.on('messageReactionAdd', (reaction, user) => { // 📢 📰🎉 
 	if(user.bot) return;
-	if (reaction.message.channel.id == '776157558217637919') {
+	if (reaction.message.channel.id == '778651779679780874') {
 		let member = reaction.message.guild.members.cache.get(user.id);
 		if (reaction.emoji.name === '📢') {
 			const role =  reaction.message.guild.roles.cache.find((r) => r.name === 'Announcements');
@@ -56,7 +56,7 @@ client.on('messageReactionAdd', (reaction, user) => { // 📢 📰🎉
 
 client.on('messageReactionRemove', (reaction, user) => { // 📢 📰🎉 
 	if(user.bot) return;
-	if (reaction.message.channel.id == '776157558217637919') {
+	if (reaction.message.channel.id == '778651779679780874') {
 		let member = reaction.message.guild.members.cache.get(user.id);
 		if (reaction.emoji.name === '📢') {
 			const role =  reaction.message.guild.roles.cache.find((r) => r.name === 'Announcements');
