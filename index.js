@@ -34,6 +34,7 @@ client.on('message', message => {
 
 client.once('ready', () => {
 	console.log('Ready!');
+	client.user.setActivity(config.Status.STRING, {type: config.Status.type});
 });
 
 
